@@ -179,4 +179,7 @@ app.get("/search_pastorder",async(req,resp)=>{
     let result = await Order.find({orderLabel:"delivered"});
     resp.send(result);
 }) 
-app.listen(5000) 
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
