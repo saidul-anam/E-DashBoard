@@ -6,7 +6,7 @@ const OngoingOrder=()=>{
     },[])
    
     const getProducts=async()=>{
-        let result =await fetch(`http://localhost:5000/search_order`);
+        let result =await fetch(`https://e-dashboard-k01b.onrender.com/search_order`);
              result=await result.json();
 
              setProducts(result);
@@ -29,7 +29,7 @@ const OngoingOrder=()=>{
                 let price=item.price;
                 let products=item.products;
                 let deliveryDate=Date.now();
-                let result=await fetch(`http://localhost:5000/update_order/${item._id}`,{
+                let result=await fetch(`https://e-dashboard-k01b.onrender.com/update_order/${item._id}`,{
                    method:'put',
                    body:JSON.stringify({userId,price,products,deliveryDate,orderLabel}),
                    headers:{'Content-Type':"application/json"

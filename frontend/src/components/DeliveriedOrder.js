@@ -6,7 +6,7 @@ const DeliveredOrder=()=>{
     },[])
    
     const getProducts=async()=>{
-        let result =await fetch(`http://localhost:5000/search_pastorder`);
+        let result =await fetch(`https://e-dashboard-k01b.onrender.com/search_pastorder`);
              result=await result.json();
 
              setProducts(result);

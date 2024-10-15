@@ -14,14 +14,14 @@ const Carts=()=>{
     }
     const getProducts=async()=>{
         const userId=JSON.parse(localStorage.getItem('user'))._id;
-        let result =await fetch(`http://localhost:5000/search_carts/${userId}`);
+        let result =await fetch(`https://e-dashboard-k01b.onrender.com/search_carts/${userId}`);
              result=await result.json();
              setProducts(result);
              await gettotal();
     }
     const deleteproduct=async(id)=>{
          console.warn(id)
-         let result=await fetch(`http://localhost:5000/carts/${id}`,{
+         let result=await fetch(`https://e-dashboard-k01b.onrender.com/carts/${id}`,{
             method:"Delete"
          });
          result=await result.json()
@@ -38,7 +38,7 @@ const Carts=()=>{
             let userId=item.userId;
             let company=item.company;
             let Quantity=String(parseInt(item.Quantity)+1)
-            let result=await fetch(`http://localhost:5000/update_cart_inc/${item._id}`,{
+            let result=await fetch(`https://e-dashboard-k01b.onrender.com/update_cart_inc/${item._id}`,{
                method:'put',
                body:JSON.stringify({name,price,catagory,productId,userId,company,Quantity}),
                headers:{'Content-Type':"application/json"
@@ -60,7 +60,7 @@ const Carts=()=>{
                 deleteproduct(item._id);
             }
             else{
-            let result=await fetch(`http://localhost:5000/update_cart_dec/${item._id}`,{
+            let result=await fetch(`https://e-dashboard-k01b.onrender.com/update_cart_dec/${item._id}`,{
                method:'put',
                body:JSON.stringify( {name,price,catagory,productId,userId,company,Quantity}),
                headers:{'Content-Type':"application/json"
@@ -72,7 +72,7 @@ const Carts=()=>{
            }
            const orderNow=async(price,products)=>{
             const userId=JSON.parse(localStorage.getItem('user'))._id;
-           let result=await fetch('http://localhost:5000/order',{
+           let result=await fetch('https://e-dashboard-k01b.onrender.com/order',{
                 method:'post',
                 body: JSON.stringify({userId,price,products}),
                 headers:{
@@ -88,7 +88,7 @@ const Carts=()=>{
             let Quantity=item.Quantity;
             let OrderStatus="confirmed";
             let Confirm_level="preprocessing"
-            let result_update_admin=await fetch(`http://localhost:5000/update_cart_confirm/${item._id}`,{
+            let result_update_admin=await fetch(`https://e-dashboard-k01b.onrender.com/update_cart_confirm/${item._id}`,{
                 method:'put',
                 body:JSON.stringify( {name,price,catagory,productId,userId,company,Quantity,OrderStatus,Confirm_level}),
                 headers:{'Content-Type':"application/json"

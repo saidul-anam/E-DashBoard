@@ -8,7 +8,7 @@ const PastCart=()=>{
     
     const getProducts=async()=>{
         const userId=JSON.parse(localStorage.getItem('user'))._id;
-        let result =await fetch(`http://localhost:5000/search_pastcart/${userId}`);
+        let result =await fetch(`https://e-dashboard-k01b.onrender.com/search_pastcart/${userId}`);
              result=await result.json();
              console.warn(result);
              setProducts(result);

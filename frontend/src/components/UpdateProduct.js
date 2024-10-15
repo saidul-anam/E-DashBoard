@@ -12,7 +12,7 @@ const UpdateProduct=()=>{
         getProductDetails();
     })
     const getProductDetails=async()=>{
-    let result =await fetch(`http://localhost:5000/product/${params.id}`);
+    let result =await fetch(`https://e-dashboard-k01b.onrender.com/product/${params.id}`);
     result=await result.json()
     console.warn(result);
     if(!error){
@@ -24,7 +24,7 @@ const UpdateProduct=()=>{
 }
     }
    const updateproduct=async()=>{
-     let result=await fetch(`http://localhost:5000/product/${params.id}`,{
+     let result=await fetch(`https://e-dashboard-k01b.onrender.com/product/${params.id}`,{
         method:'put',
         body:JSON.stringify( { name,price,catagory,company }),
         headers:{'Content-Type':"application/json"

@@ -9,14 +9,14 @@ const ProductList=()=>{
     },[])
 
     const getProducts=async()=>{
-             let result=await fetch("http://localhost:5000/products");
+             let result=await fetch("https://e-dashboard-k01b.onrender.com/products");
              result=await result.json();
              setProducts(result);
              
     }
     const deleteproduct=async(id)=>{
          console.warn(id)
-         let result=await fetch(`http://localhost:5000/product/${id}`,{
+         let result=await fetch(`https://e-dashboard-k01b.onrender.com/product/${id}`,{
             method:"Delete"
          });
          result=await result.json()
@@ -30,7 +30,7 @@ const ProductList=()=>{
             const productId=id;
             const Quantity='1';
             console.warn(name,price,catagory,company);
-            let result=await fetch('http://localhost:5000/cart',{
+            let result=await fetch('https://e-dashboard-k01b.onrender.com/cart',{
                  method:'post',
                  body: JSON.stringify({name,price,catagory,productId,userId,company,Quantity}),
                  headers:{
@@ -46,7 +46,7 @@ const ProductList=()=>{
             if(!key){
                 getProducts()
             }
-            let result=await fetch(`http://localhost:5000/search/${key}`)
+            let result=await fetch(`https://e-dashboard-k01b.onrender.com/search/${key}`)
             result=await result.json()
             if(result){
                 setProducts(result)
